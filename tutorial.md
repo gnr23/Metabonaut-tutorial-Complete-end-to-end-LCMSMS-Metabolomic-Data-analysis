@@ -1,11 +1,22 @@
 In this tutorial, I am learning by using an end-to-end workflow for LC-MS-based untargeted metabolomics experiments, conducted entirely within R using packages from the Bioconductor project or base R functionality.
+ It should be noted that the samples were analyzed using ultra-high-performance liquid chromatography (UHPLC) coupled to a Q-TOF mass spectrometer (TripleTOF 5600+), and chromatographic separation was achieved using hydrophilic interaction liquid chromatography (HILIC).
+
+In this workflow, two datasets are used:
+
+An LC-MS-based (MS1 level only) untargeted metabolomics dataset to quantify small polar metabolites in human plasma samples.
+An additional LC-MS/MS dataset of selected samples from the former study for the identification and annotation of significant features.
+
+individuals suffering from cardiovascular disease (CVD) 
+and healthy controls (CTR). 
+three CVD patients, three CTR individuals, and four quality control (QC) samples. 
+MetaboLights database under the ID: MTBLS8735.
 
 
 step 1 Data import
 
 We extract our dataset from the MetaboLigths database and load it as an `MsExperiment` object. 
 
-![img1](%5Cimages)
+[img1]
 
 step 2 Data organization We next configure the parallel processing setup. Raw `.mzML` files contain millions of individual data points (mass-to-charge ratios, intensities, and retention times). processing them one by one on a single CPU core, can take hours. This code splits the workload so that **2 files are processed at the exact same time** using 2 separate cores of the processor.
 img2
